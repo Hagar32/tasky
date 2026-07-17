@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
       valueListenable: ThemeController.themeNotifier,
       builder: (context, ThemeMode themeMode, Widget? child) {
         return MaterialApp(
+          title: "Tasky App",
           debugShowCheckedModeBanner: false,
           theme: lightTheme,
           darkTheme: darkTheme,
