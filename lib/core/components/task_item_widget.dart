@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:tasky/core/theme/theme_controller.dart';
 
+import '../constants/storage_key.dart';
 import '../enums/task_item_actions_enum.dart';
 import '../services/preferences_manager.dart';
 import '../widgets/custom_check_box.dart';
@@ -217,7 +218,7 @@ class TaskItemWidget extends StatelessWidget {
                       onPressed: () async {
                         if (key.currentState?.validate() ?? false) {
                           final taskJson = PreferencesManager().getString(
-                            "tasks",
+                            StorageKey.tasks,
                           );
                           List<dynamic> listTasks = [];
                           if (taskJson != null) {
@@ -240,7 +241,7 @@ class TaskItemWidget extends StatelessWidget {
 
                           final taskEncode = jsonEncode(listTasks);
                           await PreferencesManager().setString(
-                            "tasks",
+                            StorageKey.tasks,
                             taskEncode,
                           );
                           Navigator.of(context).pop(true);

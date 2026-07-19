@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tasky/core/constants/storage_key.dart';
 
 import 'package:tasky/core/services/preferences_manager.dart';
 import 'package:tasky/models/task_model.dart';
@@ -43,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
       isLoading = true;
     });
     // await Future.delayed(Duration(seconds: 1));
-    final finalTask = PreferencesManager().getString("tasks");
+    final finalTask = PreferencesManager().getString(StorageKey.tasks);
 
     if (finalTask != null) {
       final taskDecode = jsonDecode(finalTask) as List<dynamic>;
@@ -70,10 +71,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _loadUserDetails() {
     setState(() {
-      username = PreferencesManager().getString("username");
+      username = PreferencesManager().getString(StorageKey.username);
 
-      motivationQuote = PreferencesManager().getString("motivationQuote");
-      userImagePath = PreferencesManager().getString("user_image");
+      motivationQuote = PreferencesManager().getString(StorageKey.motivationQuote);
+      userImagePath = PreferencesManager().getString(StorageKey.userImage);
     });
   }
 
@@ -85,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
     //todo : make shared method
     final updatedTask = tasks.map((element) => element.toJson()).toList();
-    await PreferencesManager().setString("tasks", jsonEncode(updatedTask));
+    await PreferencesManager().setString(StorageKey.tasks, jsonEncode(updatedTask));
   }
 
   Future<void> _doneTask(bool? value, int? index) async {
@@ -95,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
 
     final updatedTask = tasks.map((element) => element.toJson()).toList();
-    await PreferencesManager().setString("tasks", jsonEncode(updatedTask));
+    await PreferencesManager().setString(StorageKey.tasks, jsonEncode(updatedTask));
   }
 
   @override

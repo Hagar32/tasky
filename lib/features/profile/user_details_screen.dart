@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:tasky/core/services/preferences_manager.dart';
 import 'package:tasky/core/widgets/custom_text_form_field.dart';
 
+import '../../core/constants/storage_key.dart';
+
 class UserDetailsScreen extends StatefulWidget {
   const UserDetailsScreen({
     super.key,
@@ -78,12 +80,12 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                 onPressed: () async {
                   if (_userDetailsKey.currentState?.validate() ?? false) {
                     await PreferencesManager().setString(
-                      "username",
+                      StorageKey.username,
                       userNameController.value.text,
                     );
 
                     await PreferencesManager().setString(
-                      "motivationQuote",
+                      StorageKey.motivationQuote,
                       motivationQuoteController.value.text,
                     );
                     Navigator.pop(context, true);
