@@ -137,19 +137,23 @@ class HomeScreen extends StatelessWidget {
         floatingActionButton: SizedBox(
           height: 40,
           width: 168,
-          child: FloatingActionButton.extended(
-            onPressed: () async {
-              final bool? result = await Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AddTaskScreen()),
-              );
-              if (result != null && result == true) {
-                context.read<HomeController>().loadTask();
-              }
-            },
+          child: Builder(
+            builder: (context) {
+              return FloatingActionButton.extended(
+                onPressed: () async {
+                  final bool? result = await Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AddTaskScreen()),
+                  );
+                  if (result != null && result == true) {
+                    context.read<HomeController>().loadTask();
+                  }
+                },
 
-            icon: Icon(Icons.add),
-            label: Text("Add New Task"),
+                icon: Icon(Icons.add),
+                label: Text("Add New Task"),
+              );
+            }
           ),
         ),
       ),

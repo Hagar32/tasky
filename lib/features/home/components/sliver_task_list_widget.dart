@@ -5,9 +5,7 @@ import 'package:tasky/core/components/task_item_widget.dart';
 import 'package:tasky/features/home/home_controller.dart';
 
 class SliverTaskListWidget extends StatelessWidget {
-  const SliverTaskListWidget({super.key, this.emptyMessage});
-
-  final String? emptyMessage;
+  const SliverTaskListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
