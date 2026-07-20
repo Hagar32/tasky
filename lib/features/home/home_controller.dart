@@ -19,7 +19,7 @@ class HomeController with ChangeNotifier {
   String? userImagePath;
 
   init (){
-  loadUserDetails();
+  loadUserData();
   loadTask();
 
 }
@@ -44,7 +44,7 @@ class HomeController with ChangeNotifier {
     notifyListeners();
   }
 
-  void loadUserDetails() {
+  void loadUserData() {
     username = PreferencesManager().getString(StorageKey.username);
 
     motivationQuote =
