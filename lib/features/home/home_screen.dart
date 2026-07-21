@@ -9,6 +9,7 @@ import 'package:tasky/features/home/home_controller.dart';
 import 'package:tasky/features/add_task/add_task_screen.dart';
 
 import 'package:tasky/features/home/components/sliver_task_list_widget.dart';
+import 'package:tasky/features/tasks/controllers/tasks_controller.dart';
 
 import 'components/achieved_tasks_widget.dart';
 import 'components/high_priority_tasks_widget.dart';
@@ -19,7 +20,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<HomeController>(
-      create: (BuildContext context) => HomeController()..init(),
+      create: (_) => HomeController()..init(),
+
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -146,14 +148,14 @@ class HomeScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => AddTaskScreen()),
                   );
                   if (result != null && result == true) {
-                    context.read<HomeController>().loadTask();
+                    context.read<TasksController>().init();
                   }
                 },
 
                 icon: Icon(Icons.add),
                 label: Text("Add New Task"),
               );
-            }
+            },
           ),
         ),
       ),

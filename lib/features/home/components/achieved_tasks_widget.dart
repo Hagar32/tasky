@@ -2,16 +2,16 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tasky/features/tasks/controllers/tasks_controller.dart';
 
-import '../home_controller.dart';
 
 class AchievedTasksWidget extends StatelessWidget {
   const AchievedTasksWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<HomeController>(
-      builder: (BuildContext context, HomeController controller, Widget? child) {
+    return Consumer<TasksController>(
+      builder: (BuildContext context, TasksController controller, Widget? child) {
         return Container(
           padding: EdgeInsets.all(16),
           width: double.infinity,
